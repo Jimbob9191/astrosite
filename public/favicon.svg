@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" fill="none">
+  <style>
+    #letter {
+      fill: #000;
+    }
+    @media (prefers-color-scheme: dark) {
+      #letter {
+        fill: #fff;
+      }
+    }
+  </style>
+  <rect width="256" height="256" rx="60" fill="#000"/>
+  <path id="letter" d="M183.292 76.1421C183.292 70.6152 178.807 66.1306 173.281 66.1306H82.7201C77.1932 66.1306 72.7087 70.6152 72.7087 76.1421V179.859C72.7087 185.386 77.1932 189.87 82.7201 189.87H173.281C178.807 189.87 183.292 185.386 183.292 179.859V76.1421ZM173.281 179.859H82.7201V76.1421H173.281V179.859Z" fill="currentColor"/>
+</svg>
