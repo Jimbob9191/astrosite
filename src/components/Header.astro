@@ -1,0 +1,142 @@
+---
+---
+
+<header class="fixed top-0 left-0 w-full z-40 py-24 px-24 sm:px-32 lg:px-48">
+  <div class="flex justify-between items-center">
+    <a href="/" class="text-2xl font-medium hover:opacity-80 transition-opacity duration-300 has-background:text-white">
+      james.
+    </a>
+    <button id="menu-toggle" class="menu-toggle z-50" aria-label="Toggle menu">
+      <span class="menu-toggle-line"></span>
+      <span class="menu-toggle-line"></span>
+    </button>
+  </div>
+</header>
+
+<div id="menu-overlay" class="menu-overlay">
+  <nav class="flex flex-col items-center space-y-32 mb-64">
+    <a href="/" class="nav-link">
+      <span class="text-neutral-400">(01)</span> Home
+    </a>
+    <a href="/about" class="nav-link">
+      <span class="text-neutral-400">(02)</span> About Me
+    </a>
+    <a href="/works" class="nav-link">
+      <span class="text-neutral-400">(03)</span> Works
+    </a>
+    <a href="/photography" class="nav-link">
+      <span class="text-neutral-400">(04)</span> Photography
+    </a>
+  </nav>
+
+  <div class="mt-auto w-full px-24 sm:px-32 lg:px-48">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-48">
+      <div>
+        <p class="text-neutral-400 mb-16">Follow me.</p>
+        <div class="flex flex-wrap gap-24">
+          <a href="https://instagram.com/" target="_blank" rel="noopener" class="nav-link-small flex items-center">
+            INSTAGRAM <span class="ml-8">↗</span>
+          </a>
+          <a href="https://behance.net/" target="_blank" rel="noopener" class="nav-link-small flex items-center">
+            BEHANCE <span class="ml-8">↗</span>
+          </a>
+          <a href="https://twitter.com/" target="_blank" rel="noopener" class="nav-link-small flex items-center">
+            TWITTER <span class="ml-8">↗</span>
+          </a>
+          <a href="https://dribbble.com/" target="_blank" rel="noopener" class="nav-link-small flex items-center">
+            DRIBBBLE <span class="ml-8">↗</span>
+          </a>
+        </div>
+      </div>
+      <div>
+        <p class="text-neutral-400 mb-16">Stay connected w/ me.</p>
+        <form class="flex border-b border-neutral-700 pb-8">
+          <input 
+            type="email" 
+            placeholder="Enter your email" 
+            class="bg-transparent border-none outline-none w-full text-white placeholder-neutral-500"
+            required
+          />
+          <button type="submit" class="text-white ml-16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .menu-toggle {
+    position: relative;
+    width: 28px;
+    height: 22px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+  }
+
+  .menu-toggle-line {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--toggle-color, #000);
+    transition: all 0.3s ease;
+  }
+
+  :global([data-hero-bg]) .menu-toggle-line {
+    --toggle-color: #fff;
+  }
+
+  .menu-toggle-line:first-child {
+    top: 5px;
+  }
+
+  .menu-toggle-line:last-child {
+    bottom: 5px;
+  }
+
+  .menu-toggle.active .menu-toggle-line {
+    background-color: #fff;
+  }
+
+  .menu-toggle.active .menu-toggle-line:first-child {
+    transform: rotate(45deg);
+    top: 10px;
+  }
+
+  .menu-toggle.active .menu-toggle-line:last-child {
+    transform: rotate(-45deg);
+    bottom: 10px;
+  }
+</style>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const menuOverlay = document.getElementById('menu-overlay');
+  const header = document.querySelector('header');
+
+  // Check if hero section has background image
+  const heroSection = document.querySelector('section');
+  const hasBackground = heroSection?.querySelector('img');
+  if (hasBackground) {
+    heroSection.setAttribute('data-hero-bg', '');
+  }
+
+  menuToggle?.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    menuOverlay?.classList.toggle('active');
+    document.body.classList.toggle('overflow-hidden');
+  });
+
+  // Close menu when clicking a link
+  const navLinks = document.querySelectorAll('.nav-link');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      menuToggle?.classList.remove('active');
+      menuOverlay?.classList.remove('active');
+      document.body.classList.remove('overflow-hidden');
+    });
+  });
+</script>
