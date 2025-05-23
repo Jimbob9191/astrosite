@@ -1,0 +1,267 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+
+// Define the project data structure
+export interface Project {
+  slug: string;
+  title: string;
+  subtitle: string;
+  category: string;
+  client: string;
+  year: string;
+  role: string;
+  mainImage: string;
+  overview: string;
+  challenge: string;
+  solution: string;
+  process: {
+    title: string;
+    description: string;
+    image: string;
+  }[];
+  results: string;
+  testimonial?: {
+    quote: string;
+    author: string;
+    position: string;
+  };
+  images: string[];
+  nextProject: {
+    title: string;
+    slug: string;
+  };
+}
+
+// Sample project data
+const projects: Record<string, Project> = {
+  'fintech-app': {
+    slug: 'fintech-app',
+    title: "Fintech App Redesign",
+    subtitle: "Reimagining the digital banking experience",
+    category: "UX/UI Design",
+    client: "FinanceHub",
+    year: "2023",
+    role: "Lead UX/UI Designer",
+    mainImage: "https://images.pexels.com/photos/6694543/pexels-photo-6694543.jpeg",
+    overview: "FinanceHub wanted to redesign their mobile banking application to better serve their growing user base and incorporate new features while maintaining ease of use. The goal was to create a more intuitive, engaging experience that would help users better manage their finances.",
+    challenge: "The existing app suffered from an outdated interface, complicated navigation, and poor information architecture. Users found it difficult to complete basic tasks, and customer satisfaction scores were declining. The challenge was to simplify the experience while adding new functionality.",
+    solution: "I redesigned the app with a focus on user-centered design principles, creating a cleaner, more intuitive interface with a simplified navigation system. The new design incorporated personalized insights, improved transaction history, and better visualization of spending patterns.",
+    process: [
+      {
+        title: "Research & Discovery",
+        description: "I conducted user interviews, analyzed app store reviews, and created user personas to understand pain points and opportunities for improvement.",
+        image: "https://images.pexels.com/photos/6804604/pexels-photo-6804604.jpeg"
+      },
+      {
+        title: "Information Architecture",
+        description: "I restructured the apps navigation and content hierarchy to create a more logical flow and reduce the number of steps required to complete common tasks.",
+        image: "https://images.pexels.com/photos/8867430/pexels-photo-8867430.jpeg"
+      },
+      {
+        title: "Wireframing & Prototyping",
+        description: "I created low and high-fidelity wireframes, followed by interactive prototypes to test and refine the user experience before final design.",
+        image: "https://images.pexels.com/photos/5926393/pexels-photo-5926393.jpeg"
+      },
+      {
+        title: "Visual Design",
+        description: "I developed a fresh visual language that aligned with the brand while improving usability through better typography, color contrast, and visual hierarchy.",
+        image: "https://images.pexels.com/photos/5926382/pexels-photo-5926382.jpeg"
+      }
+    ],
+    results: "The redesigned app launched to positive user feedback, with a 32% increase in daily active users and a 27% improvement in task completion rates. User satisfaction scores improved by 45%, and the app store rating increased from 3.2 to 4.7 stars.",
+    testimonial: {
+      quote: "James transformed our banking app from a pain point to a standout feature for our customers. His design thinking and attention to user needs resulted in a product that exceeded our expectations.",
+      author: "Sarah Johnson",
+      position: "Product Director, FinanceHub"
+    },
+    images: [
+      "https://images.pexels.com/photos/5926382/pexels-photo-5926382.jpeg",
+      "https://images.pexels.com/photos/6802048/pexels-photo-6802048.jpeg",
+      "https://images.pexels.com/photos/8867434/pexels-photo-8867434.jpeg"
+    ],
+    nextProject: {
+      title: "E-commerce Website",
+      slug: "ecommerce-website"
+    }
+  },
+  'ecommerce-website': {
+    slug: "ecommerce-website",
+    title: "E-commerce Website",
+    subtitle: "Creating a seamless shopping experience",
+    category: "Web Design",
+    client: "Urban Threads",
+    year: "2022",
+    role: "UX/UI Designer & Product Strategist",
+    mainImage: "https://images.pexels.com/photos/5082579/pexels-photo-5082579.jpeg",
+    overview: "Urban Threads, a modern fashion retailer, needed a website redesign to better showcase their products and streamline the purchasing process. The goal was to create an elegant, user-friendly site that would increase conversions and average order value.",
+    challenge: "The previous website had poor mobile performance, confusing navigation, and high cart abandonment rates. The challenge was to create a more engaging shopping experience that would work seamlessly across all devices while highlighting the brands unique aesthetic.",
+    solution: "I designed a responsive e-commerce platform with improved product discovery, simplified checkout, and enhanced visual storytelling. The new design emphasized high-quality product photography, intuitive filtering, and personalized recommendations.",
+    process: [
+      {
+        title: "Competitive Analysis",
+        description: "I analyzed competitors and industry best practices to identify opportunities for differentiation and improvement.",
+        image: "https://images.pexels.com/photos/7412075/pexels-photo-7412075.jpeg"
+      },
+      {
+        title: "User Flows & Wireframing",
+        description: "I mapped out key user journeys and created wireframes focusing on streamlining the path to purchase.",
+        image: "https://images.pexels.com/photos/6444252/pexels-photo-6444252.jpeg"
+      },
+      {
+        title: "Visual Design System",
+        description: "I developed a cohesive design system that reflected the brands modern aesthetic while ensuring usability and accessibility.",
+        image: "https://images.pexels.com/photos/5082614/pexels-photo-5082614.jpeg"
+      },
+      {
+        title: "Prototyping & Testing",
+        description: "I created interactive prototypes and conducted usability testing to refine the experience before development.",
+        image: "https://images.pexels.com/photos/6044198/pexels-photo-6044198.jpeg"
+      }
+    ],
+    results: "The new website launched with a 40% increase in conversion rate, 25% reduction in cart abandonment, and 35% increase in average order value. Mobile sales increased by 60%, and the sites bounce rate decreased by 30%.",
+    testimonial: {
+      quote: "Working with James was a game-changer for our online presence. He took the time to understand our brand and customers, resulting in a website that not only looks beautiful but drives real business results.",
+      author: "Michael Chen",
+      position: "CEO, Urban Threads"
+    },
+    images: [
+      "https://images.pexels.com/photos/5082577/pexels-photo-5082577.jpeg",
+      "https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg",
+      "https://images.pexels.com/photos/5076521/pexels-photo-5076521.jpeg"
+    ],
+    nextProject: {
+      title: "Health & Fitness App",
+      slug: "health-fitness-app"
+    }
+  }
+};
+
+// Get the current slug from the URL
+export async function getStaticPaths() {
+  return Object.entries(projects).map(([slug, project]) => ({
+    params: { slug },
+    props: { project }
+  }));
+}
+
+const { project } = Astro.props;
+
+if (!project) {
+  return Astro.redirect('/works');
+}
+---
+
+<Layout
+  title={`${project.title} - James - UX/UI Designer & Product Manager`}
+  description={`Case study of ${project.title} - ${project.subtitle}`}
+>
+  <Hero 
+    title={project.title} 
+    subtitle={project.subtitle}
+    alignment="left"
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-48 mb-80">
+        <div>
+          <h4 class="text-lg font-medium mb-8">Client</h4>
+          <p class="text-neutral-600">{project.client}</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-medium mb-8">Year</h4>
+          <p class="text-neutral-600">{project.year}</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-medium mb-8">Role</h4>
+          <p class="text-neutral-600">{project.role}</p>
+        </div>
+      </div>
+
+      <div class="mb-80 fade-up">
+        <img 
+          src={project.mainImage} 
+          alt={project.title} 
+          class="w-full h-auto rounded-lg"
+        />
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-64 mb-80">
+        <div class="fade-up">
+          <h3 class="text-2xl mb-24">Overview</h3>
+          <p>{project.overview}</p>
+        </div>
+        <div class="fade-up" style="transition-delay: 100ms;">
+          <h3 class="text-2xl mb-24">Challenge</h3>
+          <p>{project.challenge}</p>
+        </div>
+      </div>
+
+      <div class="mb-80 fade-up">
+        <h3 class="text-2xl mb-24">Solution</h3>
+        <p>{project.solution}</p>
+      </div>
+
+      <div class="mb-80">
+        <h3 class="text-2xl mb-48 fade-up">Process</h3>
+        
+        {project.process.map((step, index) => (
+          <div class={`grid grid-cols-1 md:grid-cols-2 gap-48 mb-80 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+            <div class="fade-up">
+              <h4 class="text-xl mb-16">{step.title}</h4>
+              <p>{step.description}</p>
+            </div>
+            <div class="fade-up" style={`transition-delay: 100ms;`}>
+              <img 
+                src={step.image} 
+                alt={step.title} 
+                class="w-full h-auto rounded-lg"
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mb-80 fade-up">
+        <h3 class="text-2xl mb-24">Results</h3>
+        <p>{project.results}</p>
+      </div>
+
+      {project.testimonial && (
+        <div class="bg-neutral-100 p-48 rounded-lg mb-80 fade-up">
+          <blockquote class="text-xl italic mb-24">{project.testimonial.quote}</blockquote>
+          <div class="flex items-center">
+            <div>
+              <p class="font-medium">{project.testimonial.author}</p>
+              <p class="text-neutral-600">{project.testimonial.position}</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div class="mb-80">
+        <h3 class="text-2xl mb-48 fade-up">Project Gallery</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-24">
+          {project.images.map((image, index) => (
+            <div class="fade-up" style={`transition-delay: ${index * 100}ms`}>
+              <img 
+                src={image} 
+                alt={`${project.title} image ${index + 1}`} 
+                class="w-full h-auto rounded-lg"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="text-center fade-up">
+        <h4 class="text-xl mb-24">Next Project</h4>
+        <a href={`/works/${project.nextProject.slug}`} class="button">
+          {project.nextProject.title}
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-8"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
