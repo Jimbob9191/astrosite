@@ -1,0 +1,141 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+
+const images = {
+  main: "https://images.pexels.com/photos/3912366/pexels-photo-3912366.jpeg",
+  process: [
+    "https://images.pexels.com/photos/8872597/pexels-photo-8872597.jpeg",
+    "https://images.pexels.com/photos/6147369/pexels-photo-6147369.jpeg",
+    "https://images.pexels.com/photos/3912518/pexels-photo-3912518.jpeg"
+  ],
+  results: [
+    "https://images.pexels.com/photos/4498151/pexels-photo-4498151.jpeg",
+    "https://images.pexels.com/photos/4498154/pexels-photo-4498154.jpeg",
+    "https://images.pexels.com/photos/4498347/pexels-photo-4498347.jpeg"
+  ]
+};
+
+const processSteps = [
+  {
+    title: "User Research",
+    description: "We conducted extensive user research to understand fitness goals, motivations, and pain points with existing apps.",
+    image: images.process[0]
+  },
+  {
+    title: "Experience Design",
+    description: "Created user journey maps and designed an adaptive interface that grows with the user's progress.",
+    image: images.process[1]
+  },
+  {
+    title: "Visual Design",
+    description: "Developed a clean, motivating interface with clear visual feedback and progress visualization.",
+    image: images.process[2]
+  }
+];
+---
+
+<Layout
+  title="Health & Fitness App - Case Study"
+  description="A user-centered health and fitness application focusing on habit building and progress tracking."
+>
+  <Hero 
+    title="Health & Fitness App"
+    subtitle="Motivating healthy habits through thoughtful design"
+    alignment="left"
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-48 mb-80">
+        <div>
+          <h4 class="text-lg font-medium mb-8">Client</h4>
+          <p class="text-neutral-600">Vitality</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-medium mb-8">Timeline</h4>
+          <p class="text-neutral-600">6 months</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-medium mb-8">Role</h4>
+          <p class="text-neutral-600">Product Designer</p>
+        </div>
+      </div>
+
+      <div class="mb-80">
+        <img 
+          src={images.main}
+          alt="Health & Fitness App Interface" 
+          class="w-full h-auto rounded-lg fade-up"
+        />
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-64 mb-80">
+        <div class="fade-up">
+          <h3 class="text-2xl mb-24">The Challenge</h3>
+          <p>The fitness app market is saturated with complex apps that often overwhelm users. We needed to create an app that was comprehensive yet simple, focusing on long-term engagement and habit formation.</p>
+        </div>
+        <div class="fade-up">
+          <h3 class="text-2xl mb-24">The Solution</h3>
+          <p>We designed a user-centered fitness app with an adaptive interface that grows with the user's progress, incorporating personalized workout plans, habit tracking, and community features.</p>
+        </div>
+      </div>
+
+      <div class="mb-80">
+        <h3 class="text-2xl mb-48 fade-up">Process</h3>
+        {processSteps.map((step, index) => (
+          <div class={`grid grid-cols-1 md:grid-cols-2 gap-48 mb-80 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+            <div class="fade-up">
+              <h4 class="text-xl mb-16">{step.title}</h4>
+              <p>{step.description}</p>
+            </div>
+            <div class="fade-up">
+              <img 
+                src={step.image}
+                alt={step.title}
+                class="w-full h-auto rounded-lg"
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mb-80">
+        <h3 class="text-2xl mb-48 fade-up">Results</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-24">
+          <div class="bg-neutral-100 p-32 rounded-lg text-center fade-up">
+            <h4 class="text-4xl font-bold mb-16">45%</h4>
+            <p>Higher retention rate than industry average</p>
+          </div>
+          <div class="bg-neutral-100 p-32 rounded-lg text-center fade-up">
+            <h4 class="text-4xl font-bold mb-16">72%</h4>
+            <p>Users engaging 3+ times per week</p>
+          </div>
+          <div class="bg-neutral-100 p-32 rounded-lg text-center fade-up">
+            <h4 class="text-4xl font-bold mb-16">4.8</h4>
+            <p>App Store rating</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-24 mb-80">
+        {images.results.map((image, index) => (
+          <div class="fade-up">
+            <img 
+              src={image}
+              alt={`Result showcase ${index + 1}`}
+              class="w-full h-auto rounded-lg"
+            />
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center">
+        <a href="/works" class="button fade-up">
+          View More Projects
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-8"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

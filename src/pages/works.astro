@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import WorkCard from '../components/WorkCard.astro';
+
+const works = [
+  {
+    title: "Fintech App Redesign",
+    category: "UX/UI Design",
+    description: "A complete redesign of a financial technology application with improved user experience and interface.",
+    imageUrl: "https://images.pexels.com/photos/6694543/pexels-photo-6694543.jpeg",
+    link: "/works/fintech-app"
+  },
+  {
+    title: "E-commerce Website",
+    category: "Web Design",
+    description: "Modern e-commerce website with intuitive navigation and seamless checkout experience.",
+    imageUrl: "https://images.pexels.com/photos/5082579/pexels-photo-5082579.jpeg",
+    link: "/works/ecommerce-website"
+  },
+  {
+    title: "Health & Fitness App",
+    category: "Product Design",
+    description: "User-centered health and fitness application focusing on habit building and progress tracking.",
+    imageUrl: "https://images.pexels.com/photos/3912366/pexels-photo-3912366.jpeg",
+    link: "/works/health-fitness-app"
+  },
+  {
+    title: "Corporate Brand Identity",
+    category: "Branding",
+    description: "Complete brand identity system for a tech startup, including logo, colors, and design guidelines.",
+    imageUrl: "https://images.pexels.com/photos/6192337/pexels-photo-6192337.jpeg",
+    link: "/works/brand-identity"
+  }
+];
+---
+
+<Layout
+  title="Works - James - UX/UI Designer & Product Manager"
+  description="Portfolio of design work by James, a UX/UI Designer with experience in product management"
+>
+  <Hero 
+    title="My Work" 
+    subtitle="A collection of selected projects that showcase my approach to design and problem-solving."
+    alignment="left"
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="work-grid">
+        {works.map((work) => (
+          <WorkCard {...work} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-neutral-100">
+    <div class="container text-center">
+      <h2 class="text-3xl mb-24 fade-up">Want to see more?</h2>
+      <p class="max-w-2xl mx-auto mb-40 fade-up">I have additional case studies and projects available upon request. Feel free to reach out for a more comprehensive portfolio review.</p>
+      <a href="mailto:hello@james.design" class="button fade-up">
+        Contact Me
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-8"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+      </a>
+    </div>
+  </section>
+</Layout>

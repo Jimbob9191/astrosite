@@ -1,0 +1,141 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+
+const images = {
+  main: "https://images.pexels.com/photos/6192337/pexels-photo-6192337.jpeg",
+  process: [
+    "https://images.pexels.com/photos/6224/hands-people-woman-working.jpg",
+    "https://images.pexels.com/photos/6444108/pexels-photo-6444108.jpeg",
+    "https://images.pexels.com/photos/6476254/pexels-photo-6476254.jpeg"
+  ],
+  results: [
+    "https://images.pexels.com/photos/5625111/pexels-photo-5625111.jpeg",
+    "https://images.pexels.com/photos/6375379/pexels-photo-6375379.jpeg",
+    "https://images.pexels.com/photos/6444111/pexels-photo-6444111.jpeg"
+  ]
+};
+
+const processSteps = [
+  {
+    title: "Brand Strategy",
+    description: "Through workshops and research, we defined the brand's values, personality, and market positioning.",
+    image: images.process[0]
+  },
+  {
+    title: "Visual Exploration",
+    description: "We explored various visual directions through mood boards and concept development.",
+    image: images.process[1]
+  },
+  {
+    title: "Identity System",
+    description: "Created a comprehensive brand system including logo, typography, colors, and supporting elements.",
+    image: images.process[2]
+  }
+];
+---
+
+<Layout
+  title="Corporate Brand Identity - Case Study"
+  description="Building a cohesive visual system for a tech startup that communicates innovation and reliability."
+>
+  <Hero 
+    title="Corporate Brand Identity"
+    subtitle="Building a cohesive visual system for a tech startup"
+    alignment="left"
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-48 mb-80">
+        <div>
+          <h4 class="text-lg font-medium mb-8">Client</h4>
+          <p class="text-neutral-600">NexGen</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-medium mb-8">Timeline</h4>
+          <p class="text-neutral-600">3 months</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-medium mb-8">Role</h4>
+          <p class="text-neutral-600">Brand Designer</p>
+        </div>
+      </div>
+
+      <div class="mb-80">
+        <img 
+          src={images.main}
+          alt="Brand Identity Showcase" 
+          class="w-full h-auto rounded-lg fade-up"
+        />
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-64 mb-80">
+        <div class="fade-up">
+          <h3 class="text-2xl mb-24">The Challenge</h3>
+          <p>NexGen needed a brand identity that would communicate innovation and reliability while standing out in the competitive tech market. The system needed to work across digital and physical touchpoints.</p>
+        </div>
+        <div class="fade-up">
+          <h3 class="text-2xl mb-24">The Solution</h3>
+          <p>We developed a comprehensive brand identity combining geometric precision with dynamic elements, creating a system that's both modern and trustworthy.</p>
+        </div>
+      </div>
+
+      <div class="mb-80">
+        <h3 class="text-2xl mb-48 fade-up">Process</h3>
+        {processSteps.map((step, index) => (
+          <div class={`grid grid-cols-1 md:grid-cols-2 gap-48 mb-80 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+            <div class="fade-up">
+              <h4 class="text-xl mb-16">{step.title}</h4>
+              <p>{step.description}</p>
+            </div>
+            <div class="fade-up">
+              <img 
+                src={step.image}
+                alt={step.title}
+                class="w-full h-auto rounded-lg"
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mb-80">
+        <h3 class="text-2xl mb-48 fade-up">Results</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-24">
+          <div class="bg-neutral-100 p-32 rounded-lg text-center fade-up">
+            <h4 class="text-4xl font-bold mb-16">85%</h4>
+            <p>Increase in brand recognition</p>
+          </div>
+          <div class="bg-neutral-100 p-32 rounded-lg text-center fade-up">
+            <h4 class="text-4xl font-bold mb-16">40%</h4>
+            <p>Growth in social media engagement</p>
+          </div>
+          <div class="bg-neutral-100 p-32 rounded-lg text-center fade-up">
+            <h4 class="text-4xl font-bold mb-16">95%</h4>
+            <p>Client satisfaction rating</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-24 mb-80">
+        {images.results.map((image, index) => (
+          <div class="fade-up">
+            <img 
+              src={image}
+              alt={`Result showcase ${index + 1}`}
+              class="w-full h-auto rounded-lg"
+            />
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center">
+        <a href="/works" class="button fade-up">
+          View More Projects
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-8"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
