@@ -3,7 +3,7 @@
 
 <header class="fixed top-0 left-0 w-full z-40 py-24 px-24 sm:px-32 lg:px-48">
   <div class="flex justify-between items-center">
-    <a href="/" class="text-2xl font-medium hover:opacity-80 transition-opacity duration-300 has-background:text-white">
+    <a href="/" class="text-2xl font-medium transition-colors duration-200" data-header-link>
       james.
     </a>
     <button id="menu-toggle" class="menu-toggle z-50" aria-label="Toggle menu">
@@ -81,12 +81,7 @@
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: var(--toggle-color, #000);
     transition: all 0.3s ease;
-  }
-
-  :global([data-hero-bg]) .menu-toggle-line {
-    --toggle-color: #fff;
   }
 
   .menu-toggle-line:first-child {
@@ -109,6 +104,12 @@
   .menu-toggle.active .menu-toggle-line:last-child {
     transform: rotate(-45deg);
     bottom: 10px;
+  }
+
+  :global([data-hero-bg]) ~ header [data-header-link],
+  :global([data-hero-bg]) ~ header .menu-toggle-line {
+    color: white;
+    background-color: white;
   }
 </style>
 
