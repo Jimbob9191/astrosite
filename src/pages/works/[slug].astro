@@ -137,16 +137,18 @@ const projects: Record<string, Project> = {
   }
 };
 
-// Get the current slug from the URL
+// Get the current slug from the URL and return the paths
 export function getStaticPaths() {
-  return Object.keys(projects).map(slug => ({
+  return Object.entries(projects).map(([slug, project]) => ({
     params: { slug },
-    props: { project: projects[slug] }
+    props: { project }
   }));
 }
 
+// Get the project data from props
 const { project } = Astro.props;
 
+// Redirect to works page if project not found
 if (!project) {
   return Astro.redirect('/works');
 }
