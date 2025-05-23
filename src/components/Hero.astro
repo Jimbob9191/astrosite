@@ -1,0 +1,22 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  alignment?: 'left' | 'center';
+}
+
+const { title, subtitle, alignment = 'center' } = Astro.props;
+---
+
+<section class={`min-h-[70vh] flex items-center justify-${alignment} py-48`}>
+  <div class="container">
+    <h1 class={`text-5xl md:text-6xl lg:text-7xl font-bold mb-24 fade-up ${alignment === 'center' ? 'text-center' : ''}`}>
+      {title}
+    </h1>
+    {subtitle && (
+      <p class={`text-xl md:text-2xl text-neutral-600 max-w-3xl ${alignment === 'center' ? 'mx-auto text-center' : ''} fade-up`}>
+        {subtitle}
+      </p>
+    )}
+  </div>
+</section>

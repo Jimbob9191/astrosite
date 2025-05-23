@@ -1,0 +1,24 @@
+---
+interface Props {
+  title: string;
+  category: string;
+  description: string;
+  imageUrl: string;
+  link: string;
+}
+
+const { title, category, description, imageUrl, link } = Astro.props;
+---
+
+<a href={link} class="group block fade-up">
+  <div class="relative overflow-hidden rounded-lg mb-24">
+    <img 
+      src={imageUrl} 
+      alt={title}
+      class="w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-110"
+    />
+  </div>
+  <h3 class="text-2xl font-medium mb-8">{title}</h3>
+  <p class="text-neutral-600 mb-16">{category}</p>
+  <p class="text-neutral-600">{description}</p>
+</a>
