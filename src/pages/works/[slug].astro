@@ -138,10 +138,10 @@ const projects: Record<string, Project> = {
 };
 
 // Get the current slug from the URL
-export async function getStaticPaths() {
-  return Object.entries(projects).map(([slug, project]) => ({
+export function getStaticPaths() {
+  return Object.keys(projects).map(slug => ({
     params: { slug },
-    props: { project }
+    props: { project: projects[slug] }
   }));
 }
 
